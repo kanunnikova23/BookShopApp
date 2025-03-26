@@ -1,57 +1,50 @@
 [
   {
-    "Title": "Brave New World",
-    "Author": "Aldous Huxley",
-    "Price": 500.0
+    "Title": [
+      "Сяйво"
+    ],
+    "Author": [
+      "Стівен Кінг"
+    ],
+    "Price": 800.0
   },
   {
-    "Title": "1984",
-    "Author": "Бартек",
-    "Price": 0.0
-  },
-  {
-    "Title": "The Myth of Normal",
-    "Author": "Gabor Mate",
-    "Price": 600.0
-  },
-  {
-    "Title": "Elly Griffith",
-    "Author": "The Crossing Places",
+    "Title": [
+      "1984"
+    ],
+    "Author": [
+      "Джордж Оурелл"
+    ],
     "Price": 400.0
   },
   {
-    "Title": "Elly Griffith",
-    "Author": "The Chalk Pit",
-    "Price": 240.0
+    "Title": [
+      "The crossing places",
+      "На пустощі"
+    ],
+    "Author": [
+      "Elly Griffith"
+    ],
+    "Price": 700.0
   },
   {
-    "Title": "Elly Griffith",
-    "Author": "The Ghost Fields",
-    "Price": 250.0
-  },
-  {
-    "Title": "Play with fire",
-    "Author": "T.M. Payne",
-    "Price": 150.0
-  },
-  {
-    "Title": "Long time dead",
-    "Author": "T.M. Payne",
+    "Title": [
+      "Janus Stone",
+      "Ice"
+    ],
+    "Author": [
+      "Elly Griffith"
+    ],
     "Price": 200.0
   },
   {
-    "Title": "This ends now",
-    "Author": "T.M. Payne",
-    "Price": 300.0
-  },
-  {
-    "Title": "Шантарам",
-    "Author": "Грегорі Девід Робертс",
-    "Price": 2000.0
-  },
-  {
-    "Title": "Тінь Гори",
-    "Author": "Грегорі Девід Робертс",
-    "Price": 1500.0
+    "Title": [
+      "The myth of normal"
+    ],
+    "Author": [
+      "Gabor Mate",
+      "Daniel Mate"
+    ],
+    "Price": 489.0
   }
 ]
