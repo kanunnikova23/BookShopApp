@@ -10,7 +10,7 @@ public class Book(List<string> title, List<string> author, decimal price)
 
     public override string ToString()
     {
-        return $"Назва: {string.Join(", ", this.Title)}, Автор: {string.Join(", ", this.Author)}, Ціна: {this.Price}";
+        return $"Назва: '{string.Join(", ", this.Title)}', Автор: {string.Join(", ", this.Author)}, Ціна: {this.Price} грн.";
     }
 
 }

@@ -46,5 +46,41 @@
       "Daniel Mate"
     ],
     "Price": 489.0
+  },
+  {
+    "Title": [
+      "The Bad Weather Friend"
+    ],
+    "Author": [
+      "Dean Koontz"
+    ],
+    "Price": 300.0
+  },
+  {
+    "Title": [
+      "After death"
+    ],
+    "Author": [
+      "Dean Koontz"
+    ],
+    "Price": 310.0
+  },
+  {
+    "Title": [
+      "The House At The End Of The World"
+    ],
+    "Author": [
+      "Dean Koontz"
+    ],
+    "Price": 320.0
+  },
+  {
+    "Title": [
+      "Great Big Beautiful Life"
+    ],
+    "Author": [
+      "Emily Henry"
+    ],
+    "Price": 500.0
   }
 ]
