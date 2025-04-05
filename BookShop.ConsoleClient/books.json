@@ -82,5 +82,34 @@
       "Emily Henry"
     ],
     "Price": 500.0
+  },
+  {
+    "Title": [
+      "The Big Dark Sky",
+      "Dark Sky"
+    ],
+    "Author": [
+      "Dean Koontz",
+      "Jean Koontz"
+    ],
+    "Price": 489.0
+  },
+  {
+    "Title": [
+      "451 градус по Фаренгейту"
+    ],
+    "Author": [
+      "Рей Бредбері"
+    ],
+    "Price": 233.0
+  },
+  {
+    "Title": [
+      "The other emily"
+    ],
+    "Author": [
+      "Dean Koontz"
+    ],
+    "Price": 340.0
   }
 ]
