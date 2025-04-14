@@ -9,7 +9,7 @@ internal class Program
     {
         var filePath = "/Users/oleksandrakanunnikova/RiderProjects/BookShopApp/BookShop.ConsoleClient/books.json";
 
-        List<Book> books = new List<Book>();
+        var books = new List<Book>();
 
         if (File.Exists(filePath))
         {
@@ -25,10 +25,10 @@ internal class Program
                 }
         }
 
-       
-        int menuChoice = 0;
+
+        var menuChoice = 0;
         var isValidMenuChoice = false;
-        
+
         while (menuChoice != 4)
         {
             Console.WriteLine(@"Введіть дію:
@@ -52,15 +52,12 @@ internal class Program
                     continue;
                 }
 
-                if (menuChoice == 4)
-                {
-                    break;
-                }
+                if (menuChoice == 4) break;
 
                 isValidMenuChoice = true;
             } while (!isValidMenuChoice);
 
-            
+
             switch (menuChoice)
             {
                 case 1:
@@ -82,7 +79,7 @@ internal class Program
                             continue;
                         }
 
-                        if (sortingChoice is < 1 or > 5)
+                        if (sortingChoice is < 0 or > 5)
                         {
                             Console.WriteLine("Введене значення неправильне");
                             continue;
@@ -122,9 +119,7 @@ internal class Program
 
                     Console.WriteLine(messageToConsole);
 
-
                     foreach (var book in booksSorted) Console.WriteLine(book.ToString());
-
 
                     PressKeyToContinue();
 
@@ -133,7 +128,6 @@ internal class Program
                 case 2:
                     Console.WriteLine("Введіть кількість книжок до додання (Max 10) :");
                     int numberOfBooks;
-
 
                     var isValidEntry = false;
                     do
@@ -162,67 +156,51 @@ internal class Program
 
                         List<string?> titles = new List<string?>();
 
-
-                        Console.Write("Введіть назву книжки: ");
                         string title;
 
-                        var hasOneMoreName = true;
+                        var hasMoreTitles = true;
 
-                        do
+                        while (hasMoreTitles)
                         {
-                            var isBookTitleValid = EnterBookTitle(out title);
+                            // цикл на правильне введення назви
+                            while (true)
+                            {
+                                Console.Write("Введіть назву книжки: ");
+                                var isBookTitleValid = EnterBookTitle(out title);
 
-                            if (isBookTitleValid == 0) break;
-                            switch (isBookTitleValid)
-                            {
-                                case 1:
-                                    Console.WriteLine("❌  Введіть назву книги коректно.");
-                                    continue;
-                                case 2:
-                                    Console.WriteLine("❌  Помилка трапилася...Зненацька...");
-                                    continue;
-                            }
-                        } while (true);
+                                if (isBookTitleValid == 0) break; // вихід з цього циклу, назва валідна
 
-                        titles.Add(title);
-                        do
-                        {
-                            Console.Write("Чи є у книжки ще одна альтернативна назва? (введіть так або ні): ");
-                            var answer = Console.ReadLine()?.Trim().ToLower() ?? "";
-                            if (answer == "так")
-                            {
-                                Console.Write("Введіть альтернативну назву книжки: ");
-                                titles.Add(Console.ReadLine()?.Trim() ?? "Невідома назва книги");
+                                switch (isBookTitleValid)
+                                {
+                                    case 1:
+                                        Console.WriteLine("❌  Введіть назву книги коректно.");
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("❌  Помилка трапилася...Зненацька...");
+                                        break;
+                                }
                             }
-                            else if (answer == "ні")
+
+                            titles.Add(title);
+
+                            // цикл на правильну відповідь "так" або "ні"
+                            while (true)
                             {
-                                hasOneMoreName = false;
-                            }
-                            else
-                            {
+                                Console.Write("Чи є у книжки ще одна альтернативна назва? (введіть так або ні): ");
+                                var answer = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+                                if (answer == "так") break;
+
+                                if (answer == "ні")
+                                {
+                                    hasMoreTitles = false;
+                                    break;
+                                }
+
                                 Console.WriteLine("❌ Невірне значення, спробуйте ще раз.");
                             }
-                        } while (hasOneMoreName);
+                        }
 
-
-                        // while (true)
-                        // {
-                        //     Console.Write("Чи є у книжки ще одна альтернативна назва? (введіть так або ні): ");
-                        //     string answer = Console.ReadLine()?.Trim().ToLower() ?? "";
-                        //     if (answer == "так")
-                        //     {
-                        //         Console.Write("Введіть альтернативну назву книжки: ");
-                        //         titles.Add(Console.ReadLine()?.Trim() ?? "Невідома назва книги");
-                        //     }
-                        //     else if (answer == "ні")
-                        //     {
-                        //         break;
-                        //     }
-                        //     else
-                        //     {
-                        //         Console.WriteLine("❌ Невірне значення, спробуйте ще раз.");
-                        //     }
-                        // }
 
                         List<string> authors = new List<string>();
 
@@ -299,7 +277,7 @@ internal class Program
                     }
 
                     PressKeyToContinue();
-                    
+
                     break;
             }
         }
