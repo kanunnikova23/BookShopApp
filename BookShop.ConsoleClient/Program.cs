@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BookShop.ConsoleClient;
 
-internal class Program
+internal static class Program
 {
     private static async Task Main()
     {
@@ -154,15 +154,14 @@ internal class Program
                     {
                         Console.WriteLine("Для створення книжки вам потрібно ввести інформацію стосовно неї.");
 
-                        List<string?> titles = new List<string?>();
-
-                        string title;
+                        var titles = new List<string?>();
 
                         var hasMoreTitles = true;
 
                         while (hasMoreTitles)
                         {
                             // цикл на правильне введення назви
+                            string title;
                             while (true)
                             {
                                 Console.Write("Введіть назву книжки: ");
@@ -187,43 +186,27 @@ internal class Program
                             while (true)
                             {
                                 Console.Write("Чи є у книжки ще одна альтернативна назва? (введіть так або ні): ");
-                                var answer = Console.ReadLine()?.Trim().ToLower() ?? "";
-
-                                if (answer == "так") break;
-
-                                if (answer == "ні")
-                                {
-                                    hasMoreTitles = false;
-                                    break;
-                                }
-
-                                Console.WriteLine("❌ Невірне значення, спробуйте ще раз.");
+                                if (GetAnswer(ref hasMoreTitles)) break;
                             }
                         }
 
 
-                        List<string> authors = new List<string>();
+                        var authors = new List<string>();
 
-                        Console.Write("Введіть автора книжки: ");
-                        authors.Add(Console.ReadLine()?.Trim() ?? "Невідомий автор");
+                        var hasMoreAuthors = true;
 
-                        while (true)
+                        while (hasMoreAuthors)
                         {
-                            Console.Write("Чи є у книжки ще один автор? (введіть так або ні): ");
-                            var answer = Console.ReadLine()?.Trim().ToLower() ?? "";
-                            if (answer == "так")
+                            Console.Write("Введіть автора книжки: ");
+
+                            authors.Add(Console.ReadLine()?.Trim() ?? "Невідомий автор");
+
+
+                            // цикл на правильну відповідь "так" або "ні"
+                            while (true)
                             {
-                                Console.Write("Введіть ім'я автора: ");
-                                // "Невідомий автор" IS NOT ADDED TO FILE IF NULL
-                                authors.Add(Console.ReadLine()?.Trim() ?? "Невідомий автор");
-                            }
-                            else if (answer == "ні")
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                Console.WriteLine("❌ Невірне значення, спробуйте ще раз.");
+                                Console.Write("Чи є у книжки ще один автор? (введіть так або ні): ");
+                                if (GetAnswer(ref hasMoreAuthors)) break;
                             }
                         }
 
@@ -253,7 +236,7 @@ internal class Program
 
                     Console.WriteLine("Введіть пошукову інформацію");
                     var name = Console.ReadLine();
-                    //IMPLEMENT NULL VALUES HANDLING
+                    // : IMPLEMENT NULL VALUES HANDLING
                     if (name != string.Empty)
                     {
                         var pattern = $@"{Regex.Escape(name)}"; // Escaping input to avoid regex errors
@@ -288,6 +271,22 @@ internal class Program
             Console.WriteLine("Натисніть будь-яку клавішу щоб продовжити.");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        bool GetAnswer(ref bool hasMoreNames)
+        {
+            var answer = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+            if (answer == "так") return true;
+
+            if (answer == "ні")
+            {
+                hasMoreNames = false;
+                return true;
+            }
+
+            Console.WriteLine("❌ Невірне значення, спробуйте ще раз.");
+            return false;
         }
     }
 
