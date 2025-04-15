@@ -233,31 +233,32 @@ internal static class Program
                     break;
 
                 case 3:
-
-                    Console.WriteLine("Введіть пошукову інформацію");
-                    var name = Console.ReadLine();
-                    // : IMPLEMENT NULL VALUES HANDLING
-                    if (name != string.Empty)
+                    var name = string.Empty;
+                    while (name == string.Empty)
                     {
-                        var pattern = $@"{Regex.Escape(name)}"; // Escaping input to avoid regex errors
-
-                        var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-
-                        // Search through books
-                        Console.WriteLine("Matching books:");
-                        var isFound = false;
-
-                        foreach (var book in books)
-                            // Check if any title in the list matches the regex
-                            if (book.Title.Any(title => regex.IsMatch(title)) ||
-                                book.Author.Any(author => regex.IsMatch(author)))
-                            {
-                                Console.WriteLine(book.ToString());
-                                isFound = true;
-                            }
-
-                        if (isFound == false) Console.WriteLine("Даної книжки немає у наявності");
+                        Console.WriteLine("Введіть пошукову інформацію");
+                        name = Console.ReadLine();
                     }
+
+                    var pattern = $@"{Regex.Escape(name)}"; // Escaping input to avoid regex errors
+
+                    var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+
+                    // Search through books
+                    Console.WriteLine("Matching books:");
+                    var isFound = false;
+
+                    foreach (var book in books)
+                        // Check if any title in the list matches the regex
+                        // : revise how regex and LINQ works
+                        if (book.Title.Any(title => regex.IsMatch(title)) ||
+                            book.Author.Any(author => regex.IsMatch(author)))
+                        {
+                            Console.WriteLine(book.ToString());
+                            isFound = true;
+                        }
+
+                    if (isFound == false) Console.WriteLine($"Книжка '{name}' не була знайдена.");
 
                     PressKeyToContinue();
 
