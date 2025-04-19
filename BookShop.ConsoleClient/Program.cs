@@ -192,6 +192,7 @@ internal static class Program
 
 
                         var authors = new List<string>();
+                        string authorName = null;
 
                         var hasMoreAuthors = true;
 
@@ -199,9 +200,18 @@ internal static class Program
                         {
                             Console.Write("Введіть автора книжки: ");
 
-                            authors.Add(Console.ReadLine()?.Trim() ?? "Невідомий автор");
+                            string? input = Console.ReadLine()?.Trim();
 
+                            authorName = string.IsNullOrWhiteSpace(input) ? "Невідомий автор" : input;
 
+                            authors.Add(authorName);
+                            Console.WriteLine("Автор - Невідомий");
+
+                            if (authorName == "Невідомий автор")
+                            {
+                                break;
+                            }
+                            
                             // цикл на правильну відповідь "так" або "ні"
                             while (true)
                             {
