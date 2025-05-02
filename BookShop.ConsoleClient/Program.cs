@@ -1,4 +1,6 @@
 ﻿using System.Text.RegularExpressions;
+using BookShop.ConsoleClient.Models;
+using BookShop.ConsoleClient.Services;
 using Newtonsoft.Json;
 
 namespace BookShop.ConsoleClient;

@@ -1,4 +1,6 @@
-namespace BookShop.ConsoleClient;
+using BookShop.ConsoleClient.Models;
+
+namespace BookShop.ConsoleClient.Services;
 
 public static class BookSortService
 {

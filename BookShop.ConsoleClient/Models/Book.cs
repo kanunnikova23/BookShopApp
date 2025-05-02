@@ -1,4 +1,4 @@
-namespace BookShop.ConsoleClient;
+namespace BookShop.ConsoleClient.Models;
 
 public class Book(List<string?> title, List<string> author, decimal price)
 {
